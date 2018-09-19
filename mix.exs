@@ -20,7 +20,7 @@ defmodule Chats.Mixfile do
   def application do
     [
       mod: {Chats.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :mongodb, :poolboy, :db_connection, :connection]
     ]
   end
 
@@ -40,7 +40,11 @@ defmodule Chats.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:mongodb, ">= 0.0.0"},
+      {:poolboy, ">= 0.0.0"},
+      {:connection, "~> 1.0"},
+      {:db_connection, "~> 1.1"}
     ]
   end
 

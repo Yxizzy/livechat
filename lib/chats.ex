@@ -1,9 +1,12 @@
 defmodule Chats do
-  @moduledoc """
-  Chats keeps the contexts that define your domain
-  and business logic.
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  def mongo do
+  {:ok, conn} = Mongo.start_link(url: "mongodb://localhost:27017/live-chat")
+  # Gets an enumerable cursor for the results
+  cursor = Mongo.find(conn, "room", %{})
+
+  cursor
+  |> Enum.to_list()
+  |> IO.inspect
+  end
 end
